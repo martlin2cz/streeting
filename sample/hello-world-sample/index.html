@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="../../js/lib/streeting/streeting.js"></script>
+		<script type="text/javascript" src="js/scripts.js"></script>
+		
+		<meta charset="UTF-8">
+		<title>The template renderer</title>
+	</head>
+
+	<body onload="prepare()">
+		<section>
+			<form id="the-form">	
+				<label>Text on panel:</label>
+				<input type="text" data-streeting-id="panel-text">
+	
+				<input type="submit" value="Submit!">
+			</form>
+		</section>
+		
+		<section>
+			<svg id="the-svg">
+				<text>Template beeing loaded...</text>
+			</svg>
+		</section>
+
+		<section>
+			<output>Open result as image here:</output>
+			<a href="" id="the-result-link">here</a>
+		</section>
+
+	</body>
+</html>

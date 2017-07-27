@@ -3,9 +3,9 @@
 	* m@rtlin, 27. 7. 2017
 	*/
 
-var IMAGE_MIME = "image/png";
 streeting = {};
 
+var ID_ATTR_NAME = "data-streeting-id";
 ///////////////////////////////////////////////////////////////////////////////
 
 streeting.initialize = function(svgId, templateUrl) {
@@ -42,7 +42,24 @@ streeting.loadTemplate = function(svgId, templateUrl) {
 
 
 streeting.inferData = function(dataSourceId) {
-	return {'panel-text': 'Hi there!'};	//TODO FIXME
+	var dataSource = document.getElementById(dataSourceId);
+	var children = dataSource.childNodes;
+
+	var predicate = function (e) {
+		return e.getAttribute && e.getAttribute(ID_ATTR_NAME);
+	};
+
+	var filtered = streeting.filterAndFlatten(children, predicate);
+	
+	var result = {};
+	for (var i = 0; i < filtered.length; i++) {
+		var node = filtered[i];
+		var idAttrValue = node.getAttribute(ID_ATTR_NAME);
+		var value = node.value;
+		result[idAttrValue] = value;
+	}
+
+	return result;
 }
 
 streeting.putIntoTemplate = function(data) {
@@ -57,9 +74,11 @@ streeting.putIntoTemplate = function(data) {
 streeting.outputToImages = function(svgId) {
 	
 	var svgRoot = document.getElementById(svgId);
-	var svgXml = (new XMLSerializer()).serializeToString(svgRoot);
+	var serializer = new XMLSerializer();
+	var svgXml = serializer.serializeToString(svgRoot);
 
 	var svgSvgUrl = "data:image/svg+xml;base64," + btoa(svgXml);
+	// here should go render to PNG, but - will need external library, foo
 
 	return { 'svg': svgSvgUrl };
 }
@@ -67,3 +86,20 @@ streeting.outputToImages = function(svgId) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
+streeting.filterAndFlatten = function(nodes, predicate) {
+	var result = [];
+
+	for (var i = 0; i < nodes.length; i++) {
+		var node = nodes[i];
+		var match = predicate(node);
+		if (match) {
+			result.push(node);
+		}
+		
+		var children = node.childNodes;
+		var subresult = this.filterAndFlatten(children, predicate);
+		result = result.concat(subresult);
+	}
+
+	return result;
+}

@@ -1,0 +1,28 @@
+{
+  "name": "streeting",
+  "version": "1.0.0",
+  "description": "SVG Templates Renderer: Easy Elements Transition In Natural Grommet",
+  "main": "js/lib/streeting/streeting.js",
+  "depencencies": {
+	},
+	"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martlin2cz/streeting.git"
+  },
+  "keywords": [
+    "svg",
+    "render",
+    "data",
+    "form",
+    "template"
+  ],
+  "author": "martlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martlin2cz/streeting/issues"
+  },
+  "homepage": "https://github.com/martlin2cz/streeting#readme"
+}
