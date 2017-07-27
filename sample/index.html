@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
+
+		<script type="text/javascript" src="../js/lib/streeting/lib/raphaeljs/raphael.min.js"></script>
 		<script type="text/javascript" src="../js/lib/streeting/streeting.js"></script>
 	
 		<link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -19,6 +22,16 @@
 			<input type="button" value="Do it!!!" onclick="processIt()">
 
 		</form>
+<!--
+		<output>Original template image:</output>
+		<img src="templates/template-0.svg" />
+-->
+		<output>Original template image svg wrapper:</output>
+		<div id="the-template-svg-wrapper"></div>
+
+
+
+
 
 		<output>The resulting canvas:</output>
 		<canvas id="the-canvas"></canvas>
@@ -42,15 +55,17 @@
 				}
 				//TODO uncomment me, form onsubmit
 				*/
-				
+			
+				var templateName = 'template-0.svg';
+				var template = 'templates/' + templateName;
+
+				streeting.initialize('the-template-svg-wrapper', template);
 			}
 
 
 			function processIt() {
-				var templateName = 'template-0.svg';
 
-				var link = streeting.process('templates/' + templateName, 
-						'the-form', 'the-canvas');
+				var link = streeting.process('the-template-svg-wrapper', 'the-form', 'the-canvas');
 
 				var theResultLink = document.getElementById("the-result-link");
 				theResultLink.href = link;

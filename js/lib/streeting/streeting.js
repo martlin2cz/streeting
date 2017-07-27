@@ -7,10 +7,13 @@ var IMAGE_MIME = "image/png";
 
 streeting = {};
 
+streeting.initialize = function(templateWrapperId, templateUrl) {
+		this.loadTemplate(templateWrapperId, templateUrl);
+}
 
-streeting.process = function(templateUrl, sourceId, canvasId) {
+streeting.process = function(templateWrapperId, sourceId, canvasId) {
 	//console.log(sourceId + ", " + canvasId + ", " + imageId);
-	var template = this.loadTemplate(templateUrl);
+	var template = this.getTemplate(templateWrapperId);
 	var data = this.loadData(sourceId);
 	var rendered = this.renderTemplate(template, data);
 
@@ -20,14 +23,26 @@ streeting.process = function(templateUrl, sourceId, canvasId) {
 	return link;
 }
 
-streeting.loadTemplate = function(templateUrl) {
+streeting.loadTemplate = function(templateWrapperId, templateUrl) {
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.open("GET", templateUrl, false);
+	xhttp.overrideMimeType("image/svg+xml");
 	xhttp.send();
 
-	return xhttp.responseXML;
+	var doc = xhttp.responseXML.documentElement;
+	
+	var wrapper = document.getElementById(templateWrapperId);
+	wrapper.appendChild(doc);
 }
+
+streeting.getTemplate = function(templateWrapperId) {
+	var wrapper = document.getElementById(templateWrapperId);
+	var svg = wrapper.firstChild;
+
+	return svg;
+}
+
 
 streeting.loadData = function(sourceId) {
 	return {'panel-text': 'Hi there!'};	//TODO FIXME
@@ -35,10 +50,17 @@ streeting.loadData = function(sourceId) {
 
 streeting.renderTemplate = function(template, data) {
 	console.log(template);
-	return template; //TODO	
+
+	for (var id in data) {
+		var elem = document.getElementById(id);
+		var value = data[id];
+		elem.innerHTML = value;
+	}
+
+	return template; //XXX
 }
 
-streeting.outputToCanvas = function(rendered, canvasId) {
+streeting.outputToCanvas = function(svgRoot, canvasId) {
 	var canvas = document.getElementById(canvasId);
 	var ctx = canvas.getContext('2d');
 
@@ -48,12 +70,18 @@ streeting.outputToCanvas = function(rendered, canvasId) {
 		ctx.drawImage(img, 0, 0);
 	}
 
-	img.src = rendered;
+	var svgXml = (new XMLSerializer()).serializeToString(svgRoot);
+	var svgUrl = "data:image/svg+xml;base64," + btoa(svgXml);
+	
+	img.src = svgUrl;
+
+
+//	img.src = rendered;
 }
 
 streeting.canvasToUrl = function(canvasId) {
 	var canvas = document.getElementById(canvasId);
-	canvas.toDataURL(IMAGE_MIME);
+	return canvas.toDataURL(IMAGE_MIME);
 }
 
 

@@ -10,8 +10,8 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1052.3622"
-   height="744.09448"
+   width="524.40942"
+   height="372.04724"
    id="svg2"
    inkscape:label="Pozadí"
    version="1.1"
@@ -55,10 +55,11 @@
        xlink:href="#linearGradient3783"
        id="linearGradient3789"
        x1="62.857143"
-       y1="371.23735"
-       x2="962.85714"
-       y2="371.23735"
-       gradientUnits="userSpaceOnUse" />
+       y1="371.23734"
+       x2="962.85712"
+       y2="371.23734"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.50204082,0,0,0.50204082,-9.1078774,674.49318)" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -71,7 +72,7 @@
      inkscape:cx="296.63689"
      inkscape:cy="187.7302"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g3801"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="719"
@@ -94,21 +95,19 @@
      inkscape:label="Vrstva 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-308.2677)">
+     transform="translate(0,-680.31494)">
     <rect
        style="fill:url(#linearGradient3789);fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="rect3781"
-       width="900"
-       height="637.14288"
-       x="62.857143"
-       y="52.665913"
-       transform="translate(0,308.2677)" />
+       width="451.83673"
+       height="319.87173"
+       x="22.448977"
+       y="700.93353" />
     <path
-       style="fill:none;stroke:#574112;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 362.85714,449.80877 668.57143,101.23734 680,609.80877"
+       style="fill:none;stroke:#574112;stroke-width:5.02040815;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 173.06122,900.31555 153.48107,-174.9971 5.7376,255.32366"
        id="path3810"
-       inkscape:connector-curvature="0"
-       transform="translate(0,308.2677)" />
+       inkscape:connector-curvature="0" />
     <path
        sodipodi:type="arc"
        style="fill:url(#linearGradient3760);fill-opacity:1;fill-rule:nonzero;stroke:none"
@@ -118,10 +117,10 @@
        sodipodi:rx="560"
        sodipodi:ry="364.28571"
        d="m 920,634.09448 a 560,364.28571 0 1 1 -1120,0 560,364.28571 0 1 1 1120,0 z"
-       transform="matrix(1.3443877,0,0,1.454902,-296.83673,308.3883)" />
+       transform="matrix(0.67493751,0,0,0.7304202,-158.13202,674.55372)" />
     <g
        id="g3801"
-       transform="matrix(0.98081729,0.19492932,-0.19492932,0.98081729,329.98471,-26.733249)">
+       transform="matrix(0.49241032,0.09786248,-0.09786248,0.49241032,156.55793,506.30903)">
       <rect
          y="449.50504"
          x="148.57143"
@@ -129,18 +128,20 @@
          width="517.14288"
          id="rect3799"
          style="fill:#d0774e;fill-opacity:1;fill-rule:nonzero;stroke:none" />
-      <flowRoot
-         transform="translate(-2.8571428,331.12485)"
+      <text
+         xml:space="preserve"
          style="font-size:40px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0f0f50;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-         id="flowRoot3791"
-         xml:space="preserve"><flowRegion
-           id="flowRegion3793"><rect
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#0f0f50;fill-opacity:1;font-family:Sans;-inkscape-font-specification:Sans"
-             y="172.66591"
-             x="157.14285"
-             height="131.42857"
-             width="697.14288"
-             id="rect3795" /></flowRegion><flowPara
-           id="flowPara3797">Enter your text here ....</flowPara></flowRoot>    </g>
+         x="154.2991"
+         y="543.65106"
+         id="text3820"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           x="154.2991"
+           y="543.65106"
+           id="tspan3822"><tspan
+             x="154.2991"
+             y="543.65106"
+             id="panel-text">Enter your text here ....</tspan></tspan></text>
+    </g>
   </g>
 </svg>
