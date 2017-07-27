@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="../js/lib/streeting/streeting.js"></script>
+	
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+		<script type="text/javascript" src="js/scripts.js"></script>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>The template renderer</title>
+	</head>
+
+	<body onload="prepare()">
+		<form id="the-form">	
+			<label>Panel text:</label>
+			<input type="text" name="the-panel-text" id="the-panel-text" >
+
+			<input type="submit" value="Submit!">
+			<input type="button" value="Do it!!!" onclick="processIt()">
+
+		</form>
+
+		<output>The resulting canvas:</output>
+		<canvas id="the-canvas"></canvas>
+
+		<output>The resulting link:</output>
+		<a href="" id="the-result-link">here</a>
+
+		<output>The resulting image:</output>
+		<img src="" id="the-result-image"/>
+
+			<script>
+			function prepare() {
+				/*
+				var form = document.getElementById("the-form");
+				console.log(form);
+				form.onsubmit = function(e) {
+			
+					processIt();
+
+					return false;
+				}
+				//TODO uncomment me, form onsubmit
+				*/
+				
+			}
+
+
+			function processIt() {
+				var templateName = 'template-0.svg';
+
+				var link = streeting.process('templates/' + templateName, 
+						'the-form', 'the-canvas');
+
+				var theResultLink = document.getElementById("the-result-link");
+				theResultLink.href = link;
+
+				var theResultImage = document.getElementById("the-result-image");
+				theResultImage.src = link;
+
+
+			}
+			
+			</script>
+	
+	</body>
+</html>
