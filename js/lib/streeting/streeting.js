@@ -4,26 +4,25 @@
 	*/
 
 var IMAGE_MIME = "image/png";
-
 streeting = {};
 
-streeting.initialize = function(templateWrapperId, templateUrl) {
-		this.loadTemplate(templateWrapperId, templateUrl);
+///////////////////////////////////////////////////////////////////////////////
+
+streeting.initialize = function(svgId, templateUrl) {
+		this.loadTemplate(svgId, templateUrl);
 }
 
-streeting.process = function(templateWrapperId, sourceId, canvasId) {
-	//console.log(sourceId + ", " + canvasId + ", " + imageId);
-	var template = this.getTemplate(templateWrapperId);
-	var data = this.loadData(sourceId);
-	var rendered = this.renderTemplate(template, data);
+streeting.process = function(svgId, dataSourceId) {
+	var data = this.inferData(dataSourceId);
+	this.putIntoTemplate(data);
 
-	this.outputToCanvas(rendered, canvasId);
-
-	var link = this.canvasToUrl(canvasId);
-	return link;
+	var links = this.outputToImages(svgId);
+	return links;
 }
 
-streeting.loadTemplate = function(templateWrapperId, templateUrl) {
+///////////////////////////////////////////////////////////////////////////////
+
+streeting.loadTemplate = function(svgId, templateUrl) {
 	var xhttp = new XMLHttpRequest();
 
 	xhttp.open("GET", templateUrl, false);
@@ -31,58 +30,40 @@ streeting.loadTemplate = function(templateWrapperId, templateUrl) {
 	xhttp.send();
 
 	var doc = xhttp.responseXML.documentElement;
-	
-	var wrapper = document.getElementById(templateWrapperId);
-	wrapper.appendChild(doc);
+	doc.id = svgId;
+
+	var oldSvg = document.getElementById(svgId);
+	var wrapper = oldSvg.parentNode;
+
+	wrapper.replaceChild(doc, oldSvg);
 }
 
-streeting.getTemplate = function(templateWrapperId) {
-	var wrapper = document.getElementById(templateWrapperId);
-	var svg = wrapper.firstChild;
-
-	return svg;
-}
+///////////////////////////////////////////////////////////////////////////////
 
 
-streeting.loadData = function(sourceId) {
+streeting.inferData = function(dataSourceId) {
 	return {'panel-text': 'Hi there!'};	//TODO FIXME
 }
 
-streeting.renderTemplate = function(template, data) {
-	console.log(template);
-
+streeting.putIntoTemplate = function(data) {
 	for (var id in data) {
 		var elem = document.getElementById(id);
 		var value = data[id];
+		//TODO value handler
 		elem.innerHTML = value;
 	}
-
-	return template; //XXX
 }
 
-streeting.outputToCanvas = function(svgRoot, canvasId) {
-	var canvas = document.getElementById(canvasId);
-	var ctx = canvas.getContext('2d');
-
-	var img = new Image();
-
-	img.onload = function() {
-		ctx.drawImage(img, 0, 0);
-	}
-
-	var svgXml = (new XMLSerializer()).serializeToString(svgRoot);
-	var svgUrl = "data:image/svg+xml;base64," + btoa(svgXml);
+streeting.outputToImages = function(svgId) {
 	
-	img.src = svgUrl;
+	var svgRoot = document.getElementById(svgId);
+	var svgXml = (new XMLSerializer()).serializeToString(svgRoot);
 
+	var svgSvgUrl = "data:image/svg+xml;base64," + btoa(svgXml);
 
-//	img.src = rendered;
-}
-
-streeting.canvasToUrl = function(canvasId) {
-	var canvas = document.getElementById(canvasId);
-	return canvas.toDataURL(IMAGE_MIME);
+	return { 'svg': svgSvgUrl };
 }
 
 
+///////////////////////////////////////////////////////////////////////////////
 

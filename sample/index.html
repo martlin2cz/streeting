@@ -26,21 +26,18 @@
 		<output>Original template image:</output>
 		<img src="templates/template-0.svg" />
 -->
-		<output>Original template image svg wrapper:</output>
-		<div id="the-template-svg-wrapper"></div>
+		<div>
+			<svg id="the-svg">
+				<text>Template beeing loaded...</text>
+			</svg>
+		</div>
 
-
-
-
-
-		<output>The resulting canvas:</output>
-		<canvas id="the-canvas"></canvas>
 
 		<output>The resulting link:</output>
 		<a href="" id="the-result-link">here</a>
 
 		<output>The resulting image:</output>
-		<img src="" id="the-result-image"/>
+		<img src="" id="the-result-image" >
 
 			<script>
 			function prepare() {
@@ -59,21 +56,20 @@
 				var templateName = 'template-0.svg';
 				var template = 'templates/' + templateName;
 
-				streeting.initialize('the-template-svg-wrapper', template);
+				streeting.initialize('the-svg', template);
 			}
 
 
 			function processIt() {
 
-				var link = streeting.process('the-template-svg-wrapper', 'the-form', 'the-canvas');
+				var links = streeting.process('the-svg', 'the-form');
+				var link = links['svg'];
 
 				var theResultLink = document.getElementById("the-result-link");
 				theResultLink.href = link;
 
 				var theResultImage = document.getElementById("the-result-image");
 				theResultImage.src = link;
-
-
 			}
 			
 			</script>
