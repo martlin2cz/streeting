@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="../../js/lib/streeting/streeting.js"></script>
+		<script type="text/javascript" src="../../js/lib/streeting/processors.js"></script>
+	
+		<script type="text/javascript" src="js/scripts.js"></script>
+
+		<link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+		<meta charset="UTF-8">
+		<title>The template renderer</title>
+	</head>
+
+	<body onload="prepare()">
+		<section>
+			<form id="the-form">	
+				<label>Text on panel:</label>
+				<input type="text" data-streeting-id="panel-text" value="We <3 streeting!">
+	
+				<label>Image (full url):</label>
+				<input type="url" data-streeting-id="picture" data-streeting-attr="xlink:href" value="img/no-image.jpg">
+	
+				<label>Bulb card background color:</label>
+				<input type="color" data-streeting-id="card-board" data-streeting-style-property="fill" value="#004488">
+	
+				<label>Panel stand width:</label>
+				<input type="number" data-streeting-id="panel-stand" data-streeting-style-property="stroke-width" min="0" max="20" value="5">
+	
+				<label>Sun:</label>
+				<span class="inline-group">
+					<input type="radio" name="sun-mood" data-streeting-id="sun-mouth" data-streeting-processor="happySunMouthProcess" checked="">
+					<label>happy</label>
+
+					<input type="radio" name="sun-mood" data-streeting-id="sun-mouth" data-streeting-processor="sadSunMouthProcess">
+					<label>sad</label>
+				</span>
+
+				<label>Copyright:</label>
+				<input type="text" data-streeting-id="copyright" value="Created by m@rtlin">
+
+				<input type="button" value="Submit!" onclick="processIt()">
+
+				<!--				<input type="submit" value="Submit!"> -->
+			</form>
+		</section>
+		
+		<section>
+			<svg id="the-svg">
+				<text>Template beeing loaded...</text>
+			</svg>
+		</section>
+
+		<section>
+			<output>Open result as image here:</output>
+			<a href="" id="the-result-link">here</a>
+		</section>
+
+	</body>
+</html>

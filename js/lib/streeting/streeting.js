@@ -6,21 +6,16 @@
 streeting = {};
 
 var ID_ATTR_NAME = "data-streeting-id";
+var ATTR_ATTR_NAME = "data-streeting-attr";
+var STYLE_PROP_ATTR_NAME = "data-streeting-style-property";
+var PROCESSOR_ATTR_NAME = "data-streeting-processor";
+
+///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
 streeting.initialize = function(svgId, templateUrl) {
 		this.loadTemplate(svgId, templateUrl);
 }
-
-streeting.process = function(svgId, dataSourceId) {
-	var data = this.inferData(dataSourceId);
-	this.putIntoTemplate(data);
-
-	var links = this.outputToImages(svgId);
-	return links;
-}
-
-///////////////////////////////////////////////////////////////////////////////
 
 streeting.loadTemplate = function(svgId, templateUrl) {
 	var xhttp = new XMLHttpRequest();
@@ -39,9 +34,27 @@ streeting.loadTemplate = function(svgId, templateUrl) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+streeting.process = function(svgId, dataSourceId) {
+	var data = this.inferData(dataSourceId);
+	this.putIntoTemplate(data);
+
+	var links = this.outputToImages(svgId);
+	return links;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 
 
 streeting.inferData = function(dataSourceId) {
+	var inputs = this.listInputs(dataSourceId);
+	var data = this.inferDataFromInputs(inputs);
+
+	return data;
+}
+
+streeting.listInputs = function(dataSourceId) {
 	var dataSource = document.getElementById(dataSourceId);
 	var children = dataSource.childNodes;
 
@@ -50,24 +63,72 @@ streeting.inferData = function(dataSourceId) {
 	};
 
 	var filtered = streeting.filterAndFlatten(children, predicate);
-	
-	var result = {};
-	for (var i = 0; i < filtered.length; i++) {
-		var node = filtered[i];
-		var idAttrValue = node.getAttribute(ID_ATTR_NAME);
-		var value = node.value;
-		result[idAttrValue] = value;
+
+	return filtered;
+}
+
+streeting.inferDataFromInputs = function(inputs) {
+	var result = [];
+	for (var i = 0; i < inputs.length; i++) {
+		var input = inputs[i];
+		var value = this.inferValueOfInput(input);
+		
+		var id = input.getAttribute(ID_ATTR_NAME);
+
+		var attr = input.getAttribute(ATTR_ATTR_NAME);
+		var style = input.getAttribute(STYLE_PROP_ATTR_NAME);	
+		var processor = input.getAttribute(PROCESSOR_ATTR_NAME);
+		
+		var item = { 'id': id, 'value': value, 'attr': attr, 'style': style, 'processor': processor };
+		//console.log(item);
+		result.push(item);
 	}
 
 	return result;
 }
 
+streeting.inferValueOfInput = function(input) {
+	switch (input.type) {
+		case "radio":
+		case "checkbox":
+			return input.checked;
+		default:
+			return input.value;
+	}
+}
+///////////////////////////////////////////////////////////////////////////////
+
+
 streeting.putIntoTemplate = function(data) {
-	for (var id in data) {
+	for (var i = 0; i < data.length; i++) {
+		var item = data[i];
+		//console.log(item);
+
+		var id = item.id;
+
 		var elem = document.getElementById(id);
-		var value = data[id];
-		//TODO value handler
-		elem.innerHTML = value;
+		
+		var value = item.value;
+		var attr = item.attr;
+		var style = item.style;
+		var processor = item.processor;
+	
+		if (!attr && !style && !processor) {
+			elem.innerHTML = value;
+		}
+
+		if (attr) {
+			elem.setAttribute(attr, value);
+		}
+
+		if (style) {
+			elem.style[style] = value;
+		}
+
+		if (processor) {
+			var fun = eval(processor);
+			fun(id, elem, value);
+		}
 	}
 }
 
