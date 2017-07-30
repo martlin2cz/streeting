@@ -13,6 +13,8 @@ function prepare() {
 	}
       
 	streeting.initialize('the-svg', template);
+	streeting.makeSourceInteractive('the-form', processIt);
+
 }
 
 

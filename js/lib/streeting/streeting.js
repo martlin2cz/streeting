@@ -141,7 +141,9 @@ streeting.outputToImages = function(svgId) {
 	var svgSvgUrl = "data:image/svg+xml;base64," + btoa(svgXml);
 	// here should go render to PNG, but - will need external library, foo
 
-	return { 'svg': svgSvgUrl };
+	var links = { 'svg': svgSvgUrl };
+	//console.log(links);
+	return links;
 }
 
 

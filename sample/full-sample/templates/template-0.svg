@@ -281,9 +281,9 @@
        y="823.72449"
        x="124.06032"
        id="picture"
-       xlink:href="https://www.seznam.cz/media/img/logo_v2.png"
-       height="26.040932"
-       width="118.31509"
+       xlink:href="img/no-image.jpg"
+       height="48"
+       width="150"
        transform="matrix(0.9983829,-0.05684697,0.05700219,0.99837405,0,0)" />
     <text
        xml:space="preserve"
