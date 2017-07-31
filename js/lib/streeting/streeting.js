@@ -98,6 +98,67 @@ streeting.inferValueOfInput = function(input) {
 }
 ///////////////////////////////////////////////////////////////////////////////
 
+streeting.disperseData = function(dataSourceId, data) {
+	var inputs = this.listInputs(dataSourceId);
+
+	this.disperseDataToInputs(inputs, data);
+}
+
+streeting.disperseDataToInputs = function(inputs, data) {
+	for (var i = 0; i < data.length; i++) {
+		var item = data[i];
+		var input = this.findInputOf(inputs, item);
+		
+		var value = item.value;
+
+		this.disperseValueToInput(input, value);
+	}
+
+}
+
+streeting.findInputOf = function(inputs, item) {
+	for (var i = 0; i < inputs.length; i++) {
+		var input = inputs[i];
+
+		if (input.getAttribute(ID_ATTR_NAME) != item.id) {
+			continue;
+		}
+
+		if (input.getAttribute(ATTR_ATTR_NAME) != item.attr) {
+			continue;
+		}
+
+		if (input.getAttribute(STYLE_PROP_ATTR_NAME) != item.style) {
+			continue;
+		}
+
+		if (input.getAttribute(PROCESSOR_ATTR_NAME) != item.processor) {
+			continue;
+		}
+
+		return input;
+	}
+
+	return null;
+}
+	
+
+streeting.disperseValueToInput = function(input, value) {
+	switch (input.type) {
+		case "radio":
+		case "checkbox":
+			input.checked = value;
+			break;
+		default:
+			input.value = value;
+			break;
+	}
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+
+
 
 streeting.putIntoTemplate = function(data) {
 	for (var i = 0; i < data.length; i++) {
@@ -138,7 +199,8 @@ streeting.outputToImages = function(svgId) {
 	var serializer = new XMLSerializer();
 	var svgXml = serializer.serializeToString(svgRoot);
 
-	var svgSvgUrl = "data:image/svg+xml;base64," + btoa(svgXml);
+	var svgBase64 = btoa(encodeURIComponent(svgXml));
+	var svgSvgUrl = "data:image/svg+xml;base64," + svgBase64;
 	// here should go render to PNG, but - will need external library, foo
 
 	var links = { 'svg': svgSvgUrl };

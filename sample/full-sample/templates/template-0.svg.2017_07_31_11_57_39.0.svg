@@ -69,10 +69,10 @@
      inkscape:pageopacity="0.81568627"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="391.93918"
-     inkscape:cy="105.64719"
+     inkscape:cx="194.04807"
+     inkscape:cy="163.73151"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="sun"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="719"
@@ -278,14 +278,13 @@
            id="tspan3032"
            style="fill:#6b4219;fill-opacity:1">Lorem Ipsum</tspan></tspan></text>
     <image
-       sodipodi:absref="/home/martin/public_html/streeting/sample/full-sample/templates/img/no-image.jpg"
-       xlink:href="img/no-image.jpg"
-       transform="matrix(0.9983829,-0.05684697,0.05700219,0.99837405,0,0)"
-       width="150"
-       height="48"
-       id="picture"
+       y="823.72449"
        x="124.06032"
-       y="823.72449" />
+       id="picture"
+       xlink:href="img/no-image.jpg"
+       height="48"
+       width="150"
+       transform="matrix(0.9983829,-0.05684697,0.05700219,0.99837405,0,0)" />
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#383c09;fill-opacity:1;stroke:none;font-family:Niconne;-inkscape-font-specification:Niconne"
@@ -302,18 +301,18 @@
            id="tspan3814">copyright </tspan></tspan></text>
     <text
        sodipodi:linespacing="125%"
-       id="the-date"
-       y="1047.5551"
-       x="519.36169"
-       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:1px;word-spacing:0px;text-anchor:end;fill:#178a97;fill-opacity:1;stroke:none;font-family:Impact;-inkscape-font-specification:Impact Bold"
+       id="text13411"
+       y="1046.892"
+       x="443.67477"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#383c09;fill-opacity:1;stroke:none;font-family:Niconne;-inkscape-font-specification:Niconne"
        xml:space="preserve"><tspan
-         id="tspan3033"
-         y="1047.5551"
-         x="520.36169"
-         sodipodi:role="line">date<tspan
-   id="tspan3035"
-   y="1047.5551"
-   x="491.431"
-   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;letter-spacing:1px;text-anchor:end;fill:#178a97;fill-opacity:1;font-family:Impact;-inkscape-font-specification:Impact Bold" /></tspan></text>
+         id="tspan13413"
+         y="1046.892"
+         x="443.67477"
+         sodipodi:role="line"><tspan
+           id="tspan13415"
+           y="1046.892"
+           x="443.67477"
+           style="font-size:12px">copyright </tspan></tspan></text>
   </g>
 </svg>
