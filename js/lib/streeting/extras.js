@@ -88,5 +88,29 @@ streeting.fullTimeProcessor = function(id, elem, value) {
 	streeting.baseDateProcessor(id, elem, value, TIME_TO_FULL_STRING);
 }
 
+///////////////////////////////////////////////////////////////////////////////
 
 
+function multilinedTextProcessor(id, elem, value) {
+
+  var lines = value.split(/<br>/);
+
+  //clearChildren(elem);
+  elem.innerHTML = "";
+  var x = elem.getAttribute('x');
+
+  for (var i = 0; i < lines.length; i++) {
+    elem.innerHTML += '<tspan x="' + x + '" dy="1eM">' + lines[i] + '</tspan>';
+    
+    /*
+    var child = document.createElement('tspan');
+  
+    child.innerHTML = lines[i];
+
+    child.setAttribute('x', elem.getAttribute('x'));
+    child.setAttribute('dy', '1eM');
+
+    elem.appendChild(child);
+     */
+  }
+}
