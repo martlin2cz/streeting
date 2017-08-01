@@ -44,6 +44,15 @@ streeting.process = function(svgId, dataSourceId) {
 	return links;
 }
 
+streeting.processUpdate = function(svgId, input) {
+	var data = this.inferDataFromInput(input);
+	this.putIntoTemplate(data);
+
+	var links = this.outputToImages(svgId);
+	return links;
+}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 
 
@@ -53,6 +62,14 @@ streeting.inferData = function(dataSourceId) {
 
 	return data;
 }
+
+streeting.inferDataFromInput = function(input) {
+	var item = this.inferDataItemFromInput(input);
+
+	var data = [item ];
+	return data;
+}
+
 
 streeting.listInputs = function(dataSourceId) {
 	var dataSource = document.getElementById(dataSourceId);
@@ -71,20 +88,27 @@ streeting.inferDataFromInputs = function(inputs) {
 	var result = [];
 	for (var i = 0; i < inputs.length; i++) {
 		var input = inputs[i];
-		var value = this.inferValueOfInput(input);
-		
-		var id = input.getAttribute(ID_ATTR_NAME);
 
-		var attr = input.getAttribute(ATTR_ATTR_NAME);
-		var style = input.getAttribute(STYLE_PROP_ATTR_NAME);	
-		var processor = input.getAttribute(PROCESSOR_ATTR_NAME);
-		
-		var item = { 'id': id, 'value': value, 'attr': attr, 'style': style, 'processor': processor };
+		var item = this.inferDataItemFromInput(input);
+
 		//console.log(item);
 		result.push(item);
 	}
 
 	return result;
+}
+
+streeting.inferDataItemFromInput = function(input) {
+	var value = this.inferValueOfInput(input);
+		
+	var id = input.getAttribute(ID_ATTR_NAME);
+
+	var attr = input.getAttribute(ATTR_ATTR_NAME);
+	var style = input.getAttribute(STYLE_PROP_ATTR_NAME);	
+	var processor = input.getAttribute(PROCESSOR_ATTR_NAME);
+		
+	var item = { 'id': id, 'value': value, 'attr': attr, 'style': style, 'processor': processor };
+	return item;	
 }
 
 streeting.inferValueOfInput = function(input) {

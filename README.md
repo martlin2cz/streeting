@@ -75,4 +75,8 @@ And that's it. When you fill the text in to the page's input field (and submit t
 
 ## Future tasks
 
-It is nescessary to add idea of adding more than just texts. For example, dates, times, images.
+It is nescessary to add idea of adding more than just texts. For example, ~~dates~~, ~~times~~, images.
+
+ - [x] added some date and time processors
+ - [x] optimized: added support for update of only one field (instead of whole template) (when occured edit of only one field)
+

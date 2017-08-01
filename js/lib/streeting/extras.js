@@ -30,7 +30,7 @@ streeting.makeSourceInteractive = function(dataSourceId, processHandler) {
 
 streeting.makeInputInteractive = function(input, processHandler) {
 	var listener = function(e) {
-		processHandler();
+		processHandler(e);
 	};
 
 	switch (input.type) {

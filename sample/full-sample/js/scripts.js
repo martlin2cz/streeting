@@ -18,9 +18,15 @@ function prepare() {
 }
 
 
-function processIt() {
+function processIt(ifEvent) {
+	var links;
+	if (ifEvent) {
+		var sender = ifEvent.target;
+		links = streeting.processUpdate('the-svg', sender);
+	} else {
+		links = streeting.process('the-svg', 'the-form');
+	}
 
-	var links = streeting.process('the-svg', 'the-form');
 	var link = links['svg'];
 
 	var theResultLink = document.getElementById("the-result-link");
@@ -29,25 +35,25 @@ function processIt() {
 
 
 function happySunMouthProcess(id, elem, value) {
-	sunMouthMoodProcess(id, elem, value);
+	sunMouthMoodProcess(elem, true, value);
 }        
 
 function sadSunMouthProcess(id, elem, value) {
-	// not needed here to be done twice
-	// sunMouthMoodProcess(id, elem, value);
+	sunMouthMoodProcess(elem, false, value);
 }
 
-function happySunMouthProcess(id, elem, isHappy) {
+function sunMouthMoodProcess(elem, isHappy, isInMood) {
 	var transformation;
 
-	if (!isHappy) {
-		transformation = "rotate(180) translate(70, -1190) ";
-	} else {
-		transformation = "rotate(0)";
-	}
+	if (isInMood) {
+		if (isHappy) {
+			transformation = "rotate(0)";
+		} else {
+			transformation = "rotate(180) translate(70, -1190) ";
+		}
 	
-	elem.setAttribute('transform', transformation);
-
+		elem.setAttribute('transform', transformation);
+	}	
 }        
 
 
