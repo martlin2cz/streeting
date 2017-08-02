@@ -223,9 +223,11 @@ streeting.outputToImages = function(svgId) {
 	var serializer = new XMLSerializer();
 	var svgXml = serializer.serializeToString(svgRoot);
 
-	var svgBase64 = btoa(encodeURIComponent(svgXml));
-	var svgSvgUrl = "data:image/svg+xml;base64," + svgBase64;
-	// here should go render to PNG, but - will need external library, foo
+	//var svgBase64 = btoa(svgXml);
+	//var svgSvgUrl = "data:image/svg+xml;base64," + svgBase64;
+	var svgSvgUrl = "data:image/svg+xml;utf-8," + svgXml;
+	
+	// here should go render to PNG, but - will be a bit more complicated
 
 	var links = { 'svg': svgSvgUrl };
 	//console.log(links);
