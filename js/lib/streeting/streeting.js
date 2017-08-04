@@ -219,6 +219,10 @@ streeting.putIntoTemplate = function(data) {
 }
 
 streeting.outputToImages = function(svgId, handler) {
+	if (!handler) {
+		return;
+	}
+
 	var streeting = this;
 	console.info("Generating outlink...");
 
