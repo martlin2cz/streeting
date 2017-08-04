@@ -2,11 +2,11 @@
 	* Some utilities to be usable with the streeting
 	*/
 var DATE_TO_SHORT_STRING = function(date) {
-	return date.getDate() + ". " + (date.getMonth() + 1) + ". ";
+	return date.getDate() + "." + (date.getMonth() + 1) + ".";
 }
 
 var DATE_TO_FULL_STRING = function(date) {
-	return date.getDate() + ". " + (date.getMonth() + 1) + ". " + date.getFullYear();
+	return date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear();
 }
 
 var TIME_TO_SHORT_STRING = function(date) {
