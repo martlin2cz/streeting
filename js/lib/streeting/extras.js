@@ -79,7 +79,21 @@ streeting.outputByOIC = function(svgId, format, svgEncoding, handler) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+streeting.dateProcessor = {};
+streeting.timeProcessor = {};
 
+streeting.dateProcessor.short = function(id, elem, value) {
+	streeting.baseDateProcessor(id, elem, value, DATE_TO_SHORT_STRING);
+}
+streeting.dateProcessor.full = function(id, elem, value) {
+	streeting.baseDateProcessor(id, elem, value, DATE_TO_FULL_STRING);
+}
+streeting.timeProcessor.short = function(id, elem, value) {
+	streeting.baseDateProcessor(id, elem, value, TIME_TO_SHORT_STRING);
+}
+streeting.timeProcessor.full = function(id, elem, value) {
+	streeting.baseDateProcessor(id, elem, value, TIME_TO_FULL_STRING);
+}
 
 streeting.baseDateProcessor = function (id, elem, value, dateToStringFn) {
 	var date = new Date(value);
@@ -88,43 +102,36 @@ streeting.baseDateProcessor = function (id, elem, value, dateToStringFn) {
 
 	elem.innerHTML = str;
 }
-
-streeting.shortDateProcessor = function(id, elem, value) {
-	streeting.baseDateProcessor(id, elem, value, DATE_TO_SHORT_STRING);
-}
-streeting.fullDateProcessor = function(id, elem, value) {
-	streeting.baseDateProcessor(id, elem, value, DATE_TO_FULL_STRING);
-}
-streeting.shortTimeProcessor = function(id, elem, value) {
-	streeting.baseDateProcessor(id, elem, value, TIME_TO_SHORT_STRING);
-}
-streeting.fullTimeProcessor = function(id, elem, value) {
-	streeting.baseDateProcessor(id, elem, value, TIME_TO_FULL_STRING);
-}
-
 ///////////////////////////////////////////////////////////////////////////////
+streeting.multilinedTextProcessor = {};
 
+streeting.multilinedTextProcessor.topAligned = function(id, elem, value) {
+	streeting.baseMultilinedTextProcessor(id, elem, value, false);
+}
 
-function multilinedTextProcessor(id, elem, value) {
+streeting.multilinedTextProcessor.centerAligned = function(id, elem, value) {
+	streeting.baseMultilinedTextProcessor(id, elem, value, true);
+}
 
-  var lines = value.split(/<br>/);
+streeting.baseMultilinedTextProcessor = function(id, elem, value, isCentered) {
 
-  //clearChildren(elem);
+  var lines = value.split(/<br *\/?>/);
+
   elem.innerHTML = "";
   var x = elem.getAttribute('x');
 
   for (var i = 0; i < lines.length; i++) {
-    elem.innerHTML += '<tspan x="' + x + '" dy="1eM">' + lines[i] + '</tspan>';
+		var dy;
+		if (i == 0) {
+			if (isCentered) {
+				dy = - (lines.length / 2);
+			} else {
+				dy = 0;
+			}
+		} else {
+			dy = 1;
+		}
     
-    /*
-    var child = document.createElement('tspan');
-  
-    child.innerHTML = lines[i];
-
-    child.setAttribute('x', elem.getAttribute('x'));
-    child.setAttribute('dy', '1eM');
-
-    elem.appendChild(child);
-     */
+		elem.innerHTML += '<tspan x="' + x + '" dy="' + dy + 'eM">' + lines[i] + '</tspan>';
   }
 }

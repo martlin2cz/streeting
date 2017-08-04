@@ -23,7 +23,8 @@
 		<section>
 			<form id="the-form">	
 				<label>Text on panel:</label>
-				<input type="text" data-streeting-id="panel-text" value="We <3 streeting!">
+				<input type="text" data-streeting-id="panel-text" value="We <3 streeting!" 
+					data-streeting-processor="streeting.multilinedTextProcessor.centerAligned">
 	
 				<label>Image (full url):</label>
 				<input type="url" data-streeting-id="picture" data-streeting-attr="xlink:href" value="img/no-image.jpg">
@@ -47,7 +48,7 @@
 				<input type="text" data-streeting-id="copyright" value="Created by m@rtlin">
 
 				<label>Date:</label>
-				<input type="date" data-streeting-id="the-date" data-streeting-processor="streeting.fullDateProcessor" value="">
+				<input type="date" data-streeting-id="the-date" data-streeting-processor="streeting.dateProcessor.full" value="">
 
 				<input type="button" value="Submit!" onclick="processIt()">
 
