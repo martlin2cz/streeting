@@ -10,6 +10,9 @@ var ATTR_ATTR_NAME = "data-streeting-attr";
 var STYLE_PROP_ATTR_NAME = "data-streeting-style-property";
 var PROCESSOR_ATTR_NAME = "data-streeting-processor";
 
+var OIC_OUTPUT_FORMAT = 'png';
+var OIC_SVG_OUTPUT_ENCODING = 'utf8';
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -36,20 +39,18 @@ streeting.loadTemplate = function(svgId, templateUrl) {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-streeting.process = function(svgId, dataSourceId) {
+streeting.process = function(svgId, dataSourceId, outlinkHandler) {
 	var data = this.inferData(dataSourceId);
 	this.putIntoTemplate(data);
 
-	var links = this.outputToImages(svgId);
-	return links;
+	this.outputToImages(svgId, outlinkHandler);
 }
 
-streeting.processUpdate = function(svgId, input) {
+streeting.processUpdate = function(svgId, input, outlinkHandler) {
 	var data = this.inferDataFromInput(input);
 	this.putIntoTemplate(data);
 
-	var links = this.outputToImages(svgId);
-	return links;
+	this.outputToImages(svgId, outlinkHandler);
 }
 
 
@@ -217,24 +218,43 @@ streeting.putIntoTemplate = function(data) {
 	}
 }
 
-streeting.outputToImages = function(svgId) {
-	
+streeting.outputToImages = function(svgId, handler) {
+	var streeting = this;
+	console.info("Generating outlink...");
+
+	this.tryOutputByOIC(svgId, function(link) { 
+		if (link) {
+			handler(link);
+		} else {
+			var svg = streeting.outputToSvg(svgId);	
+			handler(svg);
+		}
+		console.info("Outlink generated");
+	});
+}
+
+streeting.outputToSvg = function(svgId) {
 	var svgRoot = document.getElementById(svgId);
 	var serializer = new XMLSerializer();
 	var svgXml = serializer.serializeToString(svgRoot);
 
-	//var svgBase64 = btoa(svgXml);
-	//var svgSvgUrl = "data:image/svg+xml;base64," + svgBase64;
-	var svgSvgUrl = "data:image/svg+xml;utf-8," + svgXml;
+	//var svgLink = btoa(svgXml);
+	//var svgLink = "data:image/svg+xml;base64," + svgBase64;
+	var svgLink = "data:image/svg+xml;utf-8," + svgXml;
 	
-	// here should go render to PNG, but - will be a bit more complicated
-
-	var links = { 'svg': svgSvgUrl };
-	//console.log(links);
-	return links;
+	return svgLink;
 }
 
+streeting.tryOutputByOIC = function(svgId, handler) {
+	try {
+		oic.toString();
+	} catch (e) {
+		handler(null);
+		return;
+	}
 
+	streeting.outputByOIC(svgId, OIC_OUTPUT_FORMAT, OIC_SVG_OUTPUT_ENCODING, handler);
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 streeting.filterAndFlatten = function(nodes, predicate) {

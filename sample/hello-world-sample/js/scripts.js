@@ -8,7 +8,6 @@ function prepare() {
 	form.onsubmit = function(e) {
       
 		processIt();
-
 		return false;
 	}
       
@@ -17,11 +16,10 @@ function prepare() {
 
 
 function processIt() {
-
-	var links = streeting.process('the-svg', 'the-form');
-	var link = links['svg'];
-
-	var theResultLink = document.getElementById("the-result-link");
-	theResultLink.href = link;
+	streeting.process('the-svg', 'the-form', function(link) {
+		
+		var theResultLink = document.getElementById("the-result-link");
+		theResultLink.href = link;
+	});
 }
          

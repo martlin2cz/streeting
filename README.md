@@ -61,10 +61,10 @@ Finally add javascript performing the process:
     }
 
     function processIt() {
-      var links = streeting.process('the-svg', 'the-form');
-    
-      var theLink = document.getElementById("the-link");
-      theLink.href = links['svg'];
+      streeting.process('the-svg', 'the-form', function(link) {
+				var theLink = document.getElementById("the-link");
+	      theLink.href = link;
+			}
     }
 
 The final step is to make `prepare()` beeing invoked when page loads, i.e.:
@@ -79,4 +79,4 @@ It is nescessary to add idea of adding more than just texts. For example, ~~date
 
  - [x] added some date and time processors
  - [x] optimized: added support for update of only one field (instead of whole template) (when occured edit of only one field)
-
+ - [x] added (optional) linkage to [online-image-cropper](https://github.com/martlin2cz/online-image-cropper) (allows output to bitmap)

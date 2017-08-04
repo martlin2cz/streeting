@@ -8,29 +8,27 @@ function prepare() {
 	form.onsubmit = function(e) {
       
 		processIt();
-
 		return false;
 	}
       
 	streeting.initialize('the-svg', template);
 	streeting.makeSourceInteractive('the-form', processIt);
-
 }
 
 
 function processIt(ifEvent) {
-	var links;
+	
+	var handler = function(link) {
+		var theResultLink = document.getElementById("the-result-link");
+		theResultLink.href = link;
+	};
+
 	if (ifEvent) {
 		var sender = ifEvent.target;
-		links = streeting.processUpdate('the-svg', sender);
+		streeting.processUpdate('the-svg', sender, handler);
 	} else {
-		links = streeting.process('the-svg', 'the-form');
+		streeting.process('the-svg', 'the-form', handler);
 	}
-
-	var link = links['svg'];
-
-	var theResultLink = document.getElementById("the-result-link");
-	theResultLink.href = link;
 }
 
 
@@ -49,7 +47,7 @@ function sunMouthMoodProcess(elem, isHappy, isInMood) {
 		if (isHappy) {
 			transformation = "rotate(0)";
 		} else {
-			transformation = "rotate(180) translate(70, -1190) ";
+			transformation = "rotate(180) translate(70, -1190) ";	// :-O
 		}
 	
 		elem.setAttribute('transform', transformation);
