@@ -20,6 +20,8 @@ function processIt() {
 		
 		var theResultLink = document.getElementById("the-result-link");
 		theResultLink.href = link;
+	}, function (msg, e) {
+		alert(msg);
 	});
 }
          

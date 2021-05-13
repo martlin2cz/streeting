@@ -67,14 +67,14 @@ streeting.exportToJson = function(dataSourceId) {
 
 ///////////////////////////////////////////////////////////////////////////////
 
-streeting.outputByOIC = function(svgId, format, svgEncoding, handler) {
+streeting.outputByOIC = function(svgId, format, svgEncoding, handler, errorHandler) {
 	var svg = document.getElementById(svgId);
 
 	if (format == 'svg') {
-		var link = oic.convertSVGtoSVGdata(svg, svgEncoding);
+		var link = oic.convertSVGtoSVGdata(svg, svgEncoding, errorHandler);
 		handler(link);
 	} else {
-		oic.convertSVGtoImageData(svg, format, handler);
+		oic.convertSVGtoImageData(svg, format, handler, errorHandler);
 	}
 }
 

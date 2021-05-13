@@ -39,18 +39,18 @@ streeting.loadTemplate = function(svgId, templateUrl) {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 
-streeting.process = function(svgId, dataSourceId, outlinkHandler) {
+streeting.process = function(svgId, dataSourceId, outlinkHandler, errorHandler) {
 	var data = this.inferData(dataSourceId);
 	this.putIntoTemplate(data);
 
-	this.outputToImages(svgId, outlinkHandler);
+	this.outputToImages(svgId, outlinkHandler, errorHandler);
 }
 
-streeting.processUpdate = function(svgId, input, outlinkHandler) {
+streeting.processUpdate = function(svgId, input, outlinkHandler, errorHandler) {
 	var data = this.inferDataFromInput(input);
 	this.putIntoTemplate(data);
 
-	this.outputToImages(svgId, outlinkHandler);
+	this.outputToImages(svgId, outlinkHandler, errorHandler);
 }
 
 
@@ -218,7 +218,7 @@ streeting.putIntoTemplate = function(data) {
 	}
 }
 
-streeting.outputToImages = function(svgId, handler) {
+streeting.outputToImages = function(svgId, handler, errorHandler) {
 	if (!handler) {
 		return;
 	}
@@ -234,7 +234,7 @@ streeting.outputToImages = function(svgId, handler) {
 			handler(svg);
 		}
 		console.info("Outlink generated");
-	});
+	}, errorHandler);
 }
 
 streeting.outputToSvg = function(svgId) {
@@ -249,7 +249,7 @@ streeting.outputToSvg = function(svgId) {
 	return svgLink;
 }
 
-streeting.tryOutputByOIC = function(svgId, handler) {
+streeting.tryOutputByOIC = function(svgId, handler, errorHandler) {
 	try {
 		oic.toString();
 	} catch (e) {
@@ -257,7 +257,7 @@ streeting.tryOutputByOIC = function(svgId, handler) {
 		return;
 	}
 
-	streeting.outputByOIC(svgId, OIC_OUTPUT_FORMAT, OIC_SVG_OUTPUT_ENCODING, handler);
+	streeting.outputByOIC(svgId, OIC_OUTPUT_FORMAT, OIC_SVG_OUTPUT_ENCODING, handler, errorHandler);
 }
 ///////////////////////////////////////////////////////////////////////////////
 

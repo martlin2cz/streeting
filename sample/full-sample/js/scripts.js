@@ -23,11 +23,14 @@ function processIt(ifEvent) {
 		theResultLink.href = link;
 	};
 
+	var errorHandler = function(msg, e) {
+		alert(msg);
+	}
 	if (ifEvent) {
 		var sender = ifEvent.target;
-		streeting.processUpdate('the-svg', sender, handler);
+		streeting.processUpdate('the-svg', sender, handler, errorHandler);
 	} else {
-		streeting.process('the-svg', 'the-form', handler);
+		streeting.process('the-svg', 'the-form', handler, errorHandler);
 	}
 }
 
