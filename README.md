@@ -1,4 +1,4 @@
-# streeting
+# streeting 1.1
 SVG Templates Renderer: Easy Elements Transition In Natural Grommet 
 
 ## What?
@@ -61,10 +61,14 @@ Finally add javascript performing the process:
     }
 
     function processIt() {
-      streeting.process('the-svg', 'the-form', function(link) {
-				var theLink = document.getElementById("the-link");
-	      theLink.href = link;
-			}
+      streeting.process('the-svg', 'the-form',
+        function(link) {
+            var theLink = document.getElementById("the-link");
+            theLink.href = link;
+		},
+        function(err, ex) {
+            alert(err);
+		});
     }
 
 The final step is to make `prepare()` beeing invoked when page loads, i.e.:
