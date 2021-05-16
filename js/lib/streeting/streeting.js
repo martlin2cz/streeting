@@ -193,7 +193,11 @@ streeting.putIntoTemplate = function(data) {
 		var id = item.id;
 
 		var elem = document.getElementById(id);
-		
+		if (!elem) {
+			console.warn("Elem with id=" + id + " does not exist, skipping");
+			continue;
+		}
+
 		var value = item.value;
 		var attr = item.attr;
 		var style = item.style;
