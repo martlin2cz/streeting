@@ -1,4 +1,4 @@
-# streeting 1.1
+# streeting 1.2
 SVG Templates Renderer: Easy Elements Transition In Natural Grommet 
 
 ## What?
@@ -84,3 +84,8 @@ It is nescessary to add idea of adding more than just texts. For example, ~~date
  - [x] added some date and time processors
  - [x] optimized: added support for update of only one field (instead of whole template) (when occured edit of only one field)
  - [x] added (optional) linkage to [online-image-cropper](https://github.com/martlin2cz/online-image-cropper) (allows output to bitmap)
+
+# Changelog
+- v1.1: added custom `errorHandler` instead of `alert` (breaks API)
+- v1.2: (Issue #1) if the target element does not exist, warns and ingores it (backwards compatible)
+ 
