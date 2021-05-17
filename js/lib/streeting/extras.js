@@ -135,3 +135,15 @@ streeting.baseMultilinedTextProcessor = function(id, elem, value, isCentered) {
 		elem.innerHTML += '<tspan x="' + x + '" dy="' + dy + 'eM">' + lines[i] + '</tspan>';
   }
 }
+
+///////////////////////////////////////////////////////////////////////////////
+streeting.sizeProcessor = function(id, elem, value) {
+	elem.setAttribute("width", value);
+	elem.setAttribute("height", value);
+}
+
+streeting.roundCornersProcessor = function(id, elem, value) {
+	elem.setAttribute("rx", value);
+	elem.setAttribute("rx", value);
+}
+

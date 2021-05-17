@@ -88,4 +88,4 @@ It is nescessary to add idea of adding more than just texts. For example, ~~date
 # Changelog
 - v1.1: added custom `errorHandler` instead of `alert` (breaks API)
 - v1.2: (Issue #1) if the target element does not exist, warns and ingores it (backwards compatible)
- 
+- v1.3: Added `streeting.sizeProcessor` and `streeting.roundCornersProcessor` processors

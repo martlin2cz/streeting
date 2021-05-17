@@ -15,7 +15,7 @@
    id="svg2"
    inkscape:label="Pozadí"
    version="1.1"
-   inkscape:version="0.48.5 r10040"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="template-0.svg">
   <defs
      id="defs3">
@@ -69,13 +69,13 @@
      inkscape:pageopacity="0.81568627"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="391.93918"
-     inkscape:cy="105.64719"
+     inkscape:cx="320.47089"
+     inkscape:cy="217.26905"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1366"
-     inkscape:window-height="719"
+     inkscape:window-height="712"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
@@ -122,7 +122,7 @@
        ry="15.877328"
        transform="matrix(0.96824083,0.25001939,-0.15120481,0.98850246,0,0)"
        style="fill:#d0774e;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="rect3799"
+       id="board"
        width="237.81975"
        height="96.808479"
        x="308.20908"
@@ -263,57 +263,57 @@
     </g>
     <text
        xml:space="preserve"
-       style="font-size:31.99999808999999829px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#6b4219;fill-opacity:1;stroke:none;font-family:Impact;-inkscape-font-specification:Impact Bold"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:Impact;-inkscape-font-specification:'Impact Bold';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#6b4219;fill-opacity:1;stroke:none"
        x="539.4729"
        y="673.80603"
        id="panel-text"
-       sodipodi:linespacing="125%"
-       transform="matrix(0.95024753,0.31149579,-0.31149579,0.95024753,0,0)"><tspan
+       transform="rotate(18.149397)"><tspan
          sodipodi:role="line"
          x="539.4729"
          y="673.80603"
-         id="tspan3030"><tspan
+         id="tspan3030"
+         style="font-size:31.99999809px;line-height:1.25"><tspan
            x="539.4729"
            y="673.80603"
            id="tspan3032"
            style="fill:#6b4219;fill-opacity:1">Lorem Ipsum</tspan></tspan></text>
     <image
-       sodipodi:absref="/home/martin/public_html/streeting/sample/full-sample/templates/img/no-image.jpg"
-       xlink:href="img/no-image.jpg"
-       transform="matrix(0.9983829,-0.05684697,0.05700219,0.99837405,0,0)"
-       width="150"
-       height="48"
-       id="picture"
+       sodipodi:absref="/home/martin/public_html/streeting/sample/full-sample/templates/../img/no-image.jpg"
+       xlink:href="../img/no-image.jpg"
+       y="823.72449"
        x="124.06032"
-       y="823.72449" />
+       id="picture"
+       height="48"
+       width="150"
+       transform="matrix(0.9983829,-0.05684697,0.05700219,0.99837405,0,0)" />
     <text
        xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#383c09;fill-opacity:1;stroke:none;font-family:Niconne;-inkscape-font-specification:Niconne"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Niconne;-inkscape-font-specification:Niconne;letter-spacing:0px;word-spacing:0px;fill:#383c09;fill-opacity:1;stroke:none"
        x="11.10345"
        y="1034.4231"
-       id="copyright"
-       sodipodi:linespacing="125%"><tspan
+       id="copyright"><tspan
          sodipodi:role="line"
          x="11.10345"
          y="1034.4231"
-         id="tspan3812"><tspan
+         id="tspan3812"
+         style="font-size:20px;line-height:1.25"><tspan
            x="11.10345"
            y="1034.4231"
            id="tspan3814">copyright </tspan></tspan></text>
     <text
-       sodipodi:linespacing="125%"
        id="the-date"
        y="1047.5551"
        x="519.36169"
-       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;line-height:125%;letter-spacing:1px;word-spacing:0px;text-anchor:end;fill:#178a97;fill-opacity:1;stroke:none;font-family:Impact;-inkscape-font-specification:Impact Bold"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:Impact;-inkscape-font-specification:'Impact Bold';text-align:end;letter-spacing:1px;word-spacing:0px;text-anchor:end;fill:#178a97;fill-opacity:1;stroke:none"
        xml:space="preserve"><tspan
          id="tspan3033"
          y="1047.5551"
          x="520.36169"
-         sodipodi:role="line">date<tspan
+         sodipodi:role="line"
+         style="font-size:14px;line-height:1.25">date<tspan
    id="tspan3035"
    y="1047.5551"
    x="491.431"
-   style="font-size:14px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:end;letter-spacing:1px;text-anchor:end;fill:#178a97;fill-opacity:1;font-family:Impact;-inkscape-font-specification:Impact Bold" /></tspan></text>
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:14px;font-family:Impact;-inkscape-font-specification:'Impact Bold';text-align:end;letter-spacing:1px;text-anchor:end;fill:#178a97;fill-opacity:1" /></tspan></text>
   </g>
 </svg>
